@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17c8abf0e32b4822bec0ebcc6c9b06a9" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="MyDatabaseModel.Customer" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.DetailServiceTransaction" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.DetailTransaction" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Division" Width="1.5" PointX="1.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Employee" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.HeaderTransaction" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.MediaSocial" Width="1.5" PointX="5.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.MediaSocialAccount" Width="1.5" PointX="8" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Privilege" Width="1.5" PointX="1.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Product" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.ProductHistory" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Promo" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Role" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Service" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Stock" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Voucher" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MyDatabaseModel.FK__HeaderTra__Custo__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__MediaSoci__Custo__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__DetailSer__Heade__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__DetailSer__Servi__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__DetailTra__Heade__59C55456" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__DetailTra__Produ__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__Role__DivisionID__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__Employee__RoleID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__HeaderTra__Cashi__58D1301D" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__MediaSoci__Media__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__Product__PromoID__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__ProductHi__Produ__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__Stock__ProductID__756D6ECB" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.AccessPrivilege" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__HeaderTra__Vouch__0697FACD" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Violation" Width="1.5" PointX="3" PointY="2.125" />
+        <AssociationConnector Association="MyDatabaseModel.FK__Violation__Emplo__2EA5EC27" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Recruiter" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Journal" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

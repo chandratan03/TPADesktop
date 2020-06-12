@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessPrivilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerDOB" Type="date" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="DetailServiceTransaction">
+          <Key>
+            <PropertyRef Name="DetailServiceID" />
+          </Key>
+          <Property Name="DetailServiceID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HeaderID" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceID" Type="varchar" MaxLength="50" />
+          <Property Name="ServicePrice" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="DetailTransaction">
+          <Key>
+            <PropertyRef Name="DetailID" />
+          </Key>
+          <Property Name="DetailID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HeaderID" Type="varchar" MaxLength="50" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivisionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeePassword" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeEmail" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeePhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeDOB" Type="date" />
+          <Property Name="EmployeeAddress" Type="varchar" MaxLength="50" />
+          <Property Name="RoleID" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeSalary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WorkShift" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="HeaderTransaction">
+          <Key>
+            <PropertyRef Name="HeaderID" />
+          </Key>
+          <Property Name="HeaderID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" />
+          <Property Name="CashierID" Type="varchar" MaxLength="50" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerCash" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TransactionDate" Type="date" />
+          <Property Name="VoucherID" Type="varchar" MaxLength="50" />
+          <Property Name="DebitTransactionID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalID" />
+          </Key>
+          <Property Name="JournalID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JournalDate" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="debits" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="credits" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="revenue" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MediaSocial">
+          <Key>
+            <PropertyRef Name="MediaID" />
+          </Key>
+          <Property Name="MediaID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MediaName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MediaSocialAccount">
+          <Key>
+            <PropertyRef Name="MediaID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="MediaID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MediaAccountName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrivilegeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MgfDate" Type="date" />
+          <Property Name="ExpDate" Type="date" />
+          <Property Name="MeasuringUnit" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="PromoID" Type="varchar" MaxLength="50" />
+          <Property Name="RestockPoint" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="ProductHistoryID" />
+          </Key>
+          <Property Name="ProductHistoryID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="MgfDate" Type="date" />
+          <Property Name="ExpDate" Type="date" />
+          <Property Name="MeasuringUnit" Type="varchar" MaxLength="50" />
+          <Property Name="Stocks" Type="int" />
+          <Property Name="ValidFrom" Type="date" />
+          <Property Name="ValidTo" Type="date" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Promo">
+          <Key>
+            <PropertyRef Name="PromoID" />
+          </Key>
+          <Property Name="PromoID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PromoDescription" Type="varchar" MaxLength="50" />
+          <Property Name="validDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Recruiter">
+          <Key>
+            <PropertyRef Name="RecruiterID" />
+          </Key>
+          <Property Name="RecruiterID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecruiterName" Type="varchar" MaxLength="50" />
+          <Property Name="RecruiterEmail" Type="varchar" MaxLength="50" />
+          <Property Name="recruiterPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="recruiterDOB" Type="date" />
+          <Property Name="recruiterAddress" Type="varchar" MaxLength="255" />
+          <Property Name="recruiterGender" Type="varchar" MaxLength="10" />
+          <Property Name="isActive" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivisionID" Type="varchar" MaxLength="50" />
+          <Property Name="JobDescription" Type="varchar" MaxLength="50" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MeasuringUnit" Type="varchar" MaxLength="50" />
+          <Property Name="ManyIn" Type="int" />
+          <Property Name="AvailableStocks" Type="int" />
+          <Property Name="ManyOut" Type="int" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsRewardItem" Type="tinyint" />
+          <Property Name="RewardStocks" Type="int" />
+          <Property Name="BrokenStocks" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Violation">
+          <Key>
+            <PropertyRef Name="ViolationID" />
+          </Key>
+          <Property Name="ViolationID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="DateViolated" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VoucherDiscount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsApplied" Type="tinyint" />
+          <Property Name="IsActive" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AccessPri__Privi__398D8EEE">
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessPrivilege" Type="Self.AccessPrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="PrivilegeID" />
+            </Principal>
+            <Dependent Role="AccessPrivilege">
+              <PropertyRef Name="PrivilegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccessPri__RoleI__3A81B327">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessPrivilege" Type="Self.AccessPrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AccessPrivilege">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailSer__Heade__56E8E7AB">
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailServiceTransaction" Type="Self.DetailServiceTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="DetailServiceTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailSer__Servi__5CD6CB2B">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailServiceTransaction" Type="Self.DetailServiceTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="DetailServiceTransaction">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTra__Heade__1A9EF37A">
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailTransaction" Type="Self.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTra__Produ__19AACF41">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailTransaction" Type="Self.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__RoleID__2E1BDC42">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__Cashi__58D1301D">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="CashierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__Custo__634EBE90">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__Vouch__0697FACD">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="VoucherID" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MediaSoci__Custo__625A9A57">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MediaSocialAccount" Type="Self.MediaSocialAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="MediaSocialAccount">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MediaSoci__Media__5165187F">
+          <End Role="MediaSocial" Type="Self.MediaSocial" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MediaSocialAccount" Type="Self.MediaSocialAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaSocial">
+              <PropertyRef Name="MediaID" />
+            </Principal>
+            <Dependent Role="MediaSocialAccount">
+              <PropertyRef Name="MediaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__PromoID__540C7B00">
+          <End Role="Promo" Type="Self.Promo" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promo">
+              <PropertyRef Name="PromoID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PromoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductHi__Produ__531856C7">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductHistory" Type="Self.ProductHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductHistory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Role__DivisionID__2B3F6F97">
+          <End Role="Division" Type="Self.Division" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__ProductID__1B9317B3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Violation__Emplo__2EA5EC27">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Violation" Type="Self.Violation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Violation">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDatabaseModelStoreContainer">
+          <EntitySet Name="AccessPrivilege" EntityType="Self.AccessPrivilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailServiceTransaction" EntityType="Self.DetailServiceTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailTransaction" EntityType="Self.DetailTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeaderTransaction" EntityType="Self.HeaderTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaSocial" EntityType="Self.MediaSocial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaSocialAccount" EntityType="Self.MediaSocialAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductHistory" EntityType="Self.ProductHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promo" EntityType="Self.Promo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recruiter" EntityType="Self.Recruiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Violation" EntityType="Self.Violation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AccessPri__Privi__398D8EEE" Association="Self.FK__AccessPri__Privi__398D8EEE">
+            <End Role="Privilege" EntitySet="Privilege" />
+            <End Role="AccessPrivilege" EntitySet="AccessPrivilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccessPri__RoleI__3A81B327" Association="Self.FK__AccessPri__RoleI__3A81B327">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AccessPrivilege" EntitySet="AccessPrivilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailSer__Heade__56E8E7AB" Association="Self.FK__DetailSer__Heade__56E8E7AB">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+            <End Role="DetailServiceTransaction" EntitySet="DetailServiceTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailSer__Servi__5CD6CB2B" Association="Self.FK__DetailSer__Servi__5CD6CB2B">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="DetailServiceTransaction" EntitySet="DetailServiceTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTra__Heade__1A9EF37A" Association="Self.FK__DetailTra__Heade__1A9EF37A">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+            <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTra__Produ__19AACF41" Association="Self.FK__DetailTra__Produ__19AACF41">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__RoleID__2E1BDC42" Association="Self.FK__Employee__RoleID__2E1BDC42">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Cashi__58D1301D" Association="Self.FK__HeaderTra__Cashi__58D1301D">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Custo__634EBE90" Association="Self.FK__HeaderTra__Custo__634EBE90">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Vouch__0697FACD" Association="Self.FK__HeaderTra__Vouch__0697FACD">
+            <End Role="Voucher" EntitySet="Voucher" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MediaSoci__Custo__625A9A57" Association="Self.FK__MediaSoci__Custo__625A9A57">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="MediaSocialAccount" EntitySet="MediaSocialAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MediaSoci__Media__5165187F" Association="Self.FK__MediaSoci__Media__5165187F">
+            <End Role="MediaSocial" EntitySet="MediaSocial" />
+            <End Role="MediaSocialAccount" EntitySet="MediaSocialAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__PromoID__540C7B00" Association="Self.FK__Product__PromoID__540C7B00">
+            <End Role="Promo" EntitySet="Promo" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductHi__Produ__531856C7" Association="Self.FK__ProductHi__Produ__531856C7">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductHistory" EntitySet="ProductHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Role__DivisionID__2B3F6F97" Association="Self.FK__Role__DivisionID__2B3F6F97">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__ProductID__1B9317B3" Association="Self.FK__Stock__ProductID__1B9317B3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Violation__Emplo__2EA5EC27" Association="Self.FK__Violation__Emplo__2EA5EC27">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Violation" EntitySet="Violation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDOB" Type="DateTime" Precision="0" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="Self.FK__HeaderTra__Custo__634EBE90" FromRole="Customer" ToRole="HeaderTransaction" />
+          <NavigationProperty Name="MediaSocialAccounts" Relationship="Self.FK__MediaSoci__Custo__625A9A57" FromRole="Customer" ToRole="MediaSocialAccount" />
+          <Property Name="IsActive" Type="Byte" />
+        </EntityType>
+        <EntityType Name="DetailServiceTransaction">
+          <Key>
+            <PropertyRef Name="DetailServiceID" />
+          </Key>
+          <Property Name="DetailServiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HeaderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HeaderTransaction" Relationship="Self.FK__DetailSer__Heade__56E8E7AB" FromRole="DetailServiceTransaction" ToRole="HeaderTransaction" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__DetailSer__Servi__5CD6CB2B" FromRole="DetailServiceTransaction" ToRole="Service" />
+          <Property Name="ServicePrice" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="DetailTransaction">
+          <Key>
+            <PropertyRef Name="DetailID" />
+          </Key>
+          <Property Name="DetailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HeaderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HeaderTransaction" Relationship="Self.FK__DetailTra__Heade__59C55456" FromRole="DetailTransaction" ToRole="HeaderTransaction" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__DetailTra__Produ__5224328E" FromRole="DetailTransaction" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DivisionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Role__DivisionID__2B3F6F97" FromRole="Division" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeDOB" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSalary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WorkShift" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Employee__RoleID__2E1BDC42" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="Self.FK__HeaderTra__Cashi__58D1301D" FromRole="Employee" ToRole="HeaderTransaction" />
+          <Property Name="IsActive" Type="Byte" />
+          <NavigationProperty Name="Violations" Relationship="MyDatabaseModel.FK__Violation__Emplo__2EA5EC27" FromRole="Employee" ToRole="Violation" />
+        </EntityType>
+        <EntityType Name="HeaderTransaction">
+          <Key>
+            <PropertyRef Name="HeaderID" />
+          </Key>
+          <Property Name="HeaderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashierID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerCash" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__HeaderTra__Custo__634EBE90" FromRole="HeaderTransaction" ToRole="Customer" />
+          <NavigationProperty Name="DetailServiceTransactions" Relationship="Self.FK__DetailSer__Heade__56E8E7AB" FromRole="HeaderTransaction" ToRole="DetailServiceTransaction" />
+          <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Heade__59C55456" FromRole="HeaderTransaction" ToRole="DetailTransaction" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__HeaderTra__Cashi__58D1301D" FromRole="HeaderTransaction" ToRole="Employee" />
+          <Property Name="VoucherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Voucher" Relationship="MyDatabaseModel.FK__HeaderTra__Vouch__0697FACD" FromRole="HeaderTransaction" ToRole="Voucher" />
+          <Property Name="DebitTransactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MediaSocial">
+          <Key>
+            <PropertyRef Name="MediaID" />
+          </Key>
+          <Property Name="MediaID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MediaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MediaSocialAccounts" Relationship="Self.FK__MediaSoci__Media__5165187F" FromRole="MediaSocial" ToRole="MediaSocialAccount" />
+        </EntityType>
+        <EntityType Name="MediaSocialAccount">
+          <Key>
+            <PropertyRef Name="MediaID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="MediaID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MediaAccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__MediaSoci__Custo__625A9A57" FromRole="MediaSocialAccount" ToRole="Customer" />
+          <NavigationProperty Name="MediaSocial" Relationship="Self.FK__MediaSoci__Media__5165187F" FromRole="MediaSocialAccount" ToRole="MediaSocial" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrivilegeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.AccessPrivilege" FromRole="Privilege" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MgfDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpDate" Type="DateTime" Precision="0" />
+          <Property Name="MeasuringUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="PromoID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Produ__5224328E" FromRole="Product" ToRole="DetailTransaction" />
+          <NavigationProperty Name="Promo" Relationship="Self.FK__Product__PromoID__540C7B00" FromRole="Product" ToRole="Promo" />
+          <NavigationProperty Name="ProductHistories" Relationship="Self.FK__ProductHi__Produ__531856C7" FromRole="Product" ToRole="ProductHistory" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__ProductID__756D6ECB" FromRole="Product" ToRole="Stock" />
+          <Property Name="RestockPoint" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="ProductHistoryID" />
+          </Key>
+          <Property Name="ProductHistoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MgfDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpDate" Type="DateTime" Precision="0" />
+          <Property Name="MeasuringUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stocks" Type="Int32" />
+          <Property Name="ValidFrom" Type="DateTime" Precision="0" />
+          <Property Name="ValidTo" Type="DateTime" Precision="0" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductHi__Produ__531856C7" FromRole="ProductHistory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Promo">
+          <Key>
+            <PropertyRef Name="PromoID" />
+          </Key>
+          <Property Name="PromoID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PromoDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="validDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__PromoID__540C7B00" FromRole="Promo" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DivisionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Division" Relationship="Self.FK__Role__DivisionID__2B3F6F97" FromRole="Role" ToRole="Division" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__RoleID__2E1BDC42" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Privileges" Relationship="Self.AccessPrivilege" FromRole="Role" ToRole="Privilege" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceID" />
+          </Key>
+          <Property Name="ServiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <NavigationProperty Name="DetailServiceTransactions" Relationship="Self.FK__DetailSer__Servi__5CD6CB2B" FromRole="Service" ToRole="DetailServiceTransaction" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MeasuringUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManyIn" Type="Int32" />
+          <Property Name="AvailableStocks" Type="Int32" />
+          <Property Name="ManyOut" Type="Int32" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsRewardItem" Type="Byte" />
+          <Property Name="RewardStocks" Type="Int32" />
+          <Property Name="BrokenStocks" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Stock__ProductID__756D6ECB" FromRole="Stock" ToRole="Product" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="VoucherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDiscount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsApplied" Type="Byte" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="MyDatabaseModel.FK__HeaderTra__Vouch__0697FACD" FromRole="Voucher" ToRole="HeaderTransaction" />
+          <Property Name="IsActive" Type="Byte" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__HeaderTra__Custo__634EBE90">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MediaSoci__Custo__625A9A57">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MediaSocialAccount" Type="Self.MediaSocialAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="MediaSocialAccount">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailSer__Heade__56E8E7AB">
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailServiceTransaction" Type="Self.DetailServiceTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="DetailServiceTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailSer__Servi__5CD6CB2B">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetailServiceTransaction" Type="Self.DetailServiceTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceID" />
+            </Principal>
+            <Dependent Role="DetailServiceTransaction">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTra__Heade__59C55456">
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="0..1" />
+          <End Role="DetailTransaction" Type="Self.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTra__Produ__5224328E">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="DetailTransaction" Type="Self.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Role__DivisionID__2B3F6F97">
+          <End Role="Division" Type="Self.Division" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__RoleID__2E1BDC42">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__Cashi__58D1301D">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="CashierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MediaSoci__Media__5165187F">
+          <End Role="MediaSocial" Type="Self.MediaSocial" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MediaSocialAccount" Type="Self.MediaSocialAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaSocial">
+              <PropertyRef Name="MediaID" />
+            </Principal>
+            <Dependent Role="MediaSocialAccount">
+              <PropertyRef Name="MediaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__PromoID__540C7B00">
+          <End Role="Promo" Type="Self.Promo" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promo">
+              <PropertyRef Name="PromoID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PromoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductHi__Produ__531856C7">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductHistory" Type="Self.ProductHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductHistory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__ProductID__756D6ECB">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccessPrivilege">
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MyDatabaseEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="DetailServiceTransactions" EntityType="Self.DetailServiceTransaction" />
+          <EntitySet Name="DetailTransactions" EntityType="Self.DetailTransaction" />
+          <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="HeaderTransactions" EntityType="Self.HeaderTransaction" />
+          <EntitySet Name="MediaSocials" EntityType="Self.MediaSocial" />
+          <EntitySet Name="MediaSocialAccounts" EntityType="Self.MediaSocialAccount" />
+          <EntitySet Name="Privileges" EntityType="Self.Privilege" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductHistories" EntityType="Self.ProductHistory" />
+          <EntitySet Name="Promoes" EntityType="Self.Promo" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <AssociationSet Name="FK__HeaderTra__Custo__634EBE90" Association="Self.FK__HeaderTra__Custo__634EBE90">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MediaSoci__Custo__625A9A57" Association="Self.FK__MediaSoci__Custo__625A9A57">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="MediaSocialAccount" EntitySet="MediaSocialAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailSer__Heade__56E8E7AB" Association="Self.FK__DetailSer__Heade__56E8E7AB">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+            <End Role="DetailServiceTransaction" EntitySet="DetailServiceTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailSer__Servi__5CD6CB2B" Association="Self.FK__DetailSer__Servi__5CD6CB2B">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="DetailServiceTransaction" EntitySet="DetailServiceTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTra__Heade__59C55456" Association="Self.FK__DetailTra__Heade__59C55456">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+            <End Role="DetailTransaction" EntitySet="DetailTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTra__Produ__5224328E" Association="Self.FK__DetailTra__Produ__5224328E">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="DetailTransaction" EntitySet="DetailTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Role__DivisionID__2B3F6F97" Association="Self.FK__Role__DivisionID__2B3F6F97">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__RoleID__2E1BDC42" Association="Self.FK__Employee__RoleID__2E1BDC42">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Cashi__58D1301D" Association="Self.FK__HeaderTra__Cashi__58D1301D">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MediaSoci__Media__5165187F" Association="Self.FK__MediaSoci__Media__5165187F">
+            <End Role="MediaSocial" EntitySet="MediaSocials" />
+            <End Role="MediaSocialAccount" EntitySet="MediaSocialAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__PromoID__540C7B00" Association="Self.FK__Product__PromoID__540C7B00">
+            <End Role="Promo" EntitySet="Promoes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductHi__Produ__531856C7" Association="Self.FK__ProductHi__Produ__531856C7">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductHistory" EntitySet="ProductHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__ProductID__756D6ECB" Association="Self.FK__Stock__ProductID__756D6ECB">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="AccessPrivilege" Association="Self.AccessPrivilege">
+            <End Role="Privilege" EntitySet="Privileges" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Vouch__0697FACD" Association="MyDatabaseModel.FK__HeaderTra__Vouch__0697FACD">
+            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <EntitySet Name="Violations" EntityType="MyDatabaseModel.Violation" />
+          <AssociationSet Name="FK__Violation__Emplo__2EA5EC27" Association="MyDatabaseModel.FK__Violation__Emplo__2EA5EC27">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Violation" EntitySet="Violations" />
+          </AssociationSet>
+          <EntitySet Name="Recruiters" EntityType="MyDatabaseModel.Recruiter" />
+          <EntitySet Name="Journals" EntityType="MyDatabaseModel.Journal" />
+        </EntityContainer>
+        <Association Name="FK__HeaderTra__Vouch__0697FACD">
+          <End Type="MyDatabaseModel.Voucher" Role="Voucher" Multiplicity="0..1" />
+          <End Type="MyDatabaseModel.HeaderTransaction" Role="HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="VoucherID" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Violation">
+          <Key>
+            <PropertyRef Name="ViolationID" />
+          </Key>
+          <Property Name="ViolationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="MyDatabaseModel.FK__Violation__Emplo__2EA5EC27" FromRole="Violation" ToRole="Employee" />
+          <Property Name="DateViolated" Type="DateTime" Precision="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Violation__Emplo__2EA5EC27">
+          <End Type="MyDatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="MyDatabaseModel.Violation" Role="Violation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Violation">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Recruiter">
+          <Key>
+            <PropertyRef Name="RecruiterID" />
+          </Key>
+          <Property Name="RecruiterID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecruiterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecruiterEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="recruiterPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="recruiterDOB" Type="DateTime" Precision="0" />
+          <Property Name="recruiterAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recruiterGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalID" />
+          </Key>
+          <Property Name="JournalID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JournalDate" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="debits" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="credits" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="balance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="revenue" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities2">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+                <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+                <ScalarProperty Name="CustomerDOB" ColumnName="CustomerDOB" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailServiceTransactions">
+            <EntityTypeMapping TypeName="MyDatabaseModel.DetailServiceTransaction">
+              <MappingFragment StoreEntitySet="DetailServiceTransaction">
+                <ScalarProperty Name="ServicePrice" ColumnName="ServicePrice" />
+                <ScalarProperty Name="DetailServiceID" ColumnName="DetailServiceID" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailTransactions">
+            <EntityTypeMapping TypeName="MyDatabaseModel.DetailTransaction">
+              <MappingFragment StoreEntitySet="DetailTransaction">
+                <ScalarProperty Name="DetailID" ColumnName="DetailID" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeePassword" ColumnName="EmployeePassword" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeePhoneNumber" ColumnName="EmployeePhoneNumber" />
+                <ScalarProperty Name="EmployeeDOB" ColumnName="EmployeeDOB" />
+                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmployeeSalary" ColumnName="EmployeeSalary" />
+                <ScalarProperty Name="WorkShift" ColumnName="WorkShift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderTransactions">
+            <EntityTypeMapping TypeName="MyDatabaseModel.HeaderTransaction">
+              <MappingFragment StoreEntitySet="HeaderTransaction">
+                <ScalarProperty Name="DebitTransactionID" ColumnName="DebitTransactionID" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CashierID" ColumnName="CashierID" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CustomerCash" ColumnName="CustomerCash" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaSocials">
+            <EntityTypeMapping TypeName="MyDatabaseModel.MediaSocial">
+              <MappingFragment StoreEntitySet="MediaSocial">
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+                <ScalarProperty Name="MediaName" ColumnName="MediaName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaSocialAccounts">
+            <EntityTypeMapping TypeName="MyDatabaseModel.MediaSocialAccount">
+              <MappingFragment StoreEntitySet="MediaSocialAccount">
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="MediaAccountName" ColumnName="MediaAccountName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privileges">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Privilege">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+                <ScalarProperty Name="PrivilegeName" ColumnName="PrivilegeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="RestockPoint" ColumnName="RestockPoint" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MgfDate" ColumnName="MgfDate" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="MeasuringUnit" ColumnName="MeasuringUnit" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PromoID" ColumnName="PromoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductHistories">
+            <EntityTypeMapping TypeName="MyDatabaseModel.ProductHistory">
+              <MappingFragment StoreEntitySet="ProductHistory">
+                <ScalarProperty Name="ProductHistoryID" ColumnName="ProductHistoryID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MgfDate" ColumnName="MgfDate" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="MeasuringUnit" ColumnName="MeasuringUnit" />
+                <ScalarProperty Name="Stocks" ColumnName="Stocks" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promoes">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Promo">
+              <MappingFragment StoreEntitySet="Promo">
+                <ScalarProperty Name="PromoID" ColumnName="PromoID" />
+                <ScalarProperty Name="PromoDescription" ColumnName="PromoDescription" />
+                <ScalarProperty Name="validDate" ColumnName="validDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MeasuringUnit" ColumnName="MeasuringUnit" />
+                <ScalarProperty Name="ManyIn" ColumnName="ManyIn" />
+                <ScalarProperty Name="AvailableStocks" ColumnName="AvailableStocks" />
+                <ScalarProperty Name="ManyOut" ColumnName="ManyOut" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="IsRewardItem" ColumnName="IsRewardItem" />
+                <ScalarProperty Name="RewardStocks" ColumnName="RewardStocks" />
+                <ScalarProperty Name="BrokenStocks" ColumnName="BrokenStocks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherDiscount" ColumnName="VoucherDiscount" />
+                <ScalarProperty Name="IsApplied" ColumnName="IsApplied" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AccessPrivilege" TypeName="MyDatabaseModel.AccessPrivilege" StoreEntitySet="AccessPrivilege">
+            <EndProperty Name="Privilege">
+              <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Violations">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Violation">
+              <MappingFragment StoreEntitySet="Violation">
+                <ScalarProperty Name="DateViolated" ColumnName="DateViolated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ViolationID" ColumnName="ViolationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recruiters">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Recruiter">
+              <MappingFragment StoreEntitySet="Recruiter">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="recruiterGender" ColumnName="recruiterGender" />
+                <ScalarProperty Name="recruiterAddress" ColumnName="recruiterAddress" />
+                <ScalarProperty Name="recruiterDOB" ColumnName="recruiterDOB" />
+                <ScalarProperty Name="recruiterPhoneNumber" ColumnName="recruiterPhoneNumber" />
+                <ScalarProperty Name="RecruiterEmail" ColumnName="RecruiterEmail" />
+                <ScalarProperty Name="RecruiterName" ColumnName="RecruiterName" />
+                <ScalarProperty Name="RecruiterID" ColumnName="RecruiterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="MyDatabaseModel.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="revenue" ColumnName="revenue" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="debits" ColumnName="debits" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="JournalID" ColumnName="JournalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="program_mvm.Views.JournalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:program_mvm.Views"
+        mc:Ignorable="d"
+        Title="JournalView"  MinWidth="600" MaxWidth="800"
+        MaxHeight="600" MinHeight="550" 
+        Background="#e8827b"
+        WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="GoToTransactionMenu" Header="Transaction Menu"/>
+                <MenuItem x:Name="GoToEmployeeMenu" Header="Employee Management Menu"/>
+                <MenuItem x:Name="GoToProductMenu" Header="Product Management Menu"/>
+                <MenuItem x:Name="GoToVoucherMenu" Header="Voucher Menu"/>
+                <MenuItem x:Name="GoToReportingMenu" Header="Reporting Menu"/>
+                <MenuItem x:Name="GoToCustomerMenu" Header="Customer Menu"/>
+            </MenuItem>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" DockPanel.Dock="Top">
+                <Button x:Name="UpdateData">Update Expenses and Income and Revenue and Tax</Button>
+                <Button x:Name="ShowExpensesChart">Show Expenses</Button>
+                <Button x:Name="ShowIncomeChart">Show Income</Button>
+                <Button x:Name="ShowRevenueChart">Show Revenue</Button>
+                <Button x:Name="ShowTaxChart">Show Tax</Button>
+            </StackPanel>
+            <ContentControl Grid.Row="1"  x:Name="ActiveItem"></ContentControl>
+        </Grid>
+    </DockPanel>
+</Window>

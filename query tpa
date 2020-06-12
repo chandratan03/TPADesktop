@@ -1,0 +1,169 @@
+
+CREATE TABLE [dbo].[Division](
+	DivisionID VARCHAR(50) PRIMARY KEY,
+	DivisionName VARCHAR(50)
+)
+
+CREATE TABLE [dbo].[Role](
+	RoleID VARCHAR(50) Primary key,
+	DivisionID VARCHAR(50) REFERENCES [Division](DivisionID),
+	JobDescription VARCHAR(50),
+	RoleName VARCHAR(50),
+)
+CREATE TABLE [dbo].[Employee]
+(
+	[EmployeeId] VARCHAR(50) NOT NULL PRIMARY KEY,
+	EmployeeName VARCHAR(50),
+	EmployeePassword VARCHAR(50),
+	EmployeeEmail VARCHAR(50),
+	EmployeePhoneNumber VARCHAR(50),
+	EmployeeDOB DATE,
+	EmployeeAddress VARCHAR(50),
+	RoleID VARCHAR(50) REFERENCES [Role](RoleID),
+	EmployeeSalary decimal,
+	WorkShift VARCHAR(10),
+	Point decimal,
+);
+
+
+CREATE TABLE [dbo].[Privilege](
+	PrivilegeID VARCHAR(50) PRIMARY KEY,
+	PrivilegeName VARCHAR(50),
+)
+
+
+CREATE TABLE [dbo].[AccessPrivilege](
+	PrivilegeID VARCHAR(50) REFERENCES [Privilege](PrivilegeID),
+	RoleID VARCHAR(50) REFERENCES [Role](RoleID),
+	PRIMARY KEY(RoleID, PrivilegeID),
+	FOREIGN KEY (PrivilegeID) References Privilege(PrivilegeID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (RoleID) References [Role](RoleID) ON DELETE CASCADE ON UPDATE CASCADE,
+
+)
+
+CREATE TABLE [dbo].[Customer](
+	CustomerID VARCHAR(50) PRIMARY KEY,
+	CustomerName VARCHAR(50),
+	CustomerEmail VARCHAR(50),
+	CustomerPhoneNumber varchar(50),
+	CustomerDOB Date,
+	CustomerAddress varchar(50),
+	Balance decimal
+)
+
+
+CREATE TABLE [dbo].[HeaderTransaction](
+	HeaderID VARCHAR(50) PRIMARY KEY,
+	CustomerID VARCHAR(50) REFERENCES [Customer](CustomerID),
+	CashierID VARCHAR(50) REFERENCES [Employee](EmployeeID),
+	TotalPrice decimal,
+	CustomerPoint decimal,
+	TransactionDate DATE,
+)
+
+
+CREATE TABLE [dbo].[MediaSocial](
+	MediaID VARCHAR(50) PRIMARY KEY,
+	[MediaName] varchar(50),
+)
+
+CREATE TABLE [dbo].[MediaSocialAccount](
+	MediaID VARCHAR(50),
+	CustomerID VARCHAR(50),
+	MediaAccountName VARCHAR(50),
+	PRIMARY KEY(CustomerID, MediaID),
+	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY(MediaID) REFERENCES MediaSocial(MediaID) ON UPDATE CASCADE ON DELETE CASCADE,
+)
+
+
+
+
+CREATE TABLE [dbo].[Voucher](
+	VoucherID varchar(50),
+	VoucherDiscount decimal,
+	IsApplied tinyint,
+)
+
+
+CREATE TABLE [dbo].[Service](
+	ServiceID VARCHAR(50) PRIMARY KEY,
+	ServiceName VARCHAR(50),
+	price float, 
+)
+CREATE TABLE [dbo].[DetailServiceTransaction](
+	DetailServiceID VARCHAR(50) PRIMARY KEY,
+	HeaderID VARCHAR(50),
+	ServiceID VARCHAR(50) REFERENCES Service(ServiceID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+
+
+create table [dbo].[DetailTransaction](
+	DetailID varchar(50) primary key,
+	HeaderID VARCHAR(50) REFERENCES [HeaderTransaction](HeaderID),
+	ProductID VARCHAR(50) REFERENCES [Product](ProductID),
+	quantity int,
+	status varchar(50)
+)
+
+create table [dbo].[Stock](
+	ProductID varchar(50) primary key references [product](productID),
+	MeasuringUnit VARCHAR(50),
+	ManyIn int,
+	AvailableStocks int,
+	ManyOut int,
+	Balance decimal,
+	IsRewardItem tinyint, 
+	RewardStocks int,
+	BrokenStocks int 
+)
+
+create table [dbo].[Product](
+	ProductID VARCHAR(50) PRIMARY KEY,
+	ProductPrice decimal,
+	Price decimal,
+	MgfDate date,
+	ExpDate date,
+	MeasuringUnit VARCHAR(50),
+	IsActive tinyInt,
+)
+
+
+create table [dbo].[ProductHistory](
+	ProductHistoryID VARChAR(50) PRIMARY KEY,
+	ProductID VARCHAR(50) REFERENCES [Product](ProductID),
+	MgfDate DATE,
+	ExpDate Date,
+	MeasuringUnit VARCHAR(50),
+	Stocks INT, 
+	ValidFrom Date, 
+	ValidTo Date,
+	Price decimal,
+	ProductPrice decimal,
+)
+
+create table [dbo].[Promo](
+	PromoID varchar(50) primary key,
+	PromoDescription varchar(50),
+	validDate varchar(50)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

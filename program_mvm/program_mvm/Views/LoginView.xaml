@@ -1,0 +1,41 @@
+﻿<Window x:Class="program_mvm.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:program_mvm.Views"
+        mc:Ignorable="d"
+         Background="#6b6b6b"
+        Title="Login" Height="300" Width="300"
+        ResizeMode="NoResize"
+        FontFamily="Sans-serif"
+        WindowStartupLocation="CenterScreen"
+        >
+   
+        <StackPanel Margin="10px">
+            <Label FontSize="20px" FontStyle="Italic" HorizontalAlignment="Center" Foreground="WhiteSmoke">
+                <TextBlock  TextDecorations="UnderLine">ZHI CHANG MART SYSTEM</TextBlock>
+            </Label>
+            <Label FontSize="30px" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" >Login</Label>
+            <StackPanel>
+                <Label FontSize="20px" Foreground="White">Email:</Label>
+                <TextBox x:Name="Email"/>
+            </StackPanel>
+        <StackPanel>
+            <Label FontSize="20px" Foreground="White">Password:</Label>
+            <TextBox x:Name="Password"/>
+        </StackPanel>
+        <!--<StackPanel>
+            <Label FontSize="20px" Foreground="White">For Test:</Label>
+            <PasswordBox />
+        </StackPanel>-->
+
+
+        <Button x:Name="Login" Margin="100 10">Login</Button>
+            <Label HorizontalAlignment="Center" Foreground="#61a5ff">Forget Password</Label>
+            <ContentControl x:Name="ActiveItem"/>
+    </StackPanel>
+        
+
+    
+</Window>
